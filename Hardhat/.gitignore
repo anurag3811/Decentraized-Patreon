@@ -1,0 +1,16 @@
+node_modules
+.env
+coverage
+coverage.json
+typechain
+typechain-types
+FundMe.sol
+Lock.sol
+SimpleStorage.sol
+deploy.js
+
+
+#Hardhat files
+cache
+artifacts
+
