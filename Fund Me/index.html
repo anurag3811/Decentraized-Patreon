@@ -1,162 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="mystyle.css">
-    <title>Fund Me</title>  
-    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
-    type="application/javascript"></script>
+    <link rel="stylesheet" href="mystyle.css" />
+    <title>Fund Me</title>
+    <script
+      src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+      type="application/javascript"
+    ></script>
 
     <style>
-        ::placeholder {
-          color: rgb(36, 36, 36);
-          opacity: 1;
-        }       
+      ::placeholder {
+        color: rgb(36, 36, 36);
+        opacity: 1;
+      }
     </style>
+  </head>
 
+  <body>
+    <p id="text"></p>
 
-</head>
-
-
-
-<body>
-    
-    <p id="text"></p> 
-    
     <!-- connect btn  -->
     <section>
-        <div class="title"><span>DE-treon</span><span><a>The decentralized patreon</a></span></div>
-        <button class="btn fourth" id="connectbtn">Connect Wallet</button>
-      </section>
-
-     
-
-
-
-
+      <div class="title">
+        <span>DE-treon</span><span><a>The decentralized patreon</a></span>
+      </div>
+      <button class="btn fourth" id="connectbtn">Connect Wallet</button>
+    </section>
 
     <!-- fund page .......................... -->
-    <div id="funderpage" style=" display: none">
-        
-        <div style="display: flex; justify-content: center; ">
-            <div style="color: white; font-size: 22px; margin-bottom: 20px; margin-right: 5px;">CURRENT LEVEL: </div>
-            <div id="mylevel" style="color: white; width: 12px; font-size: 22px;"></div>
+    <div id="funderpage" style="display: none">
+      <div class="centerer">
+        <div
+          style="
+            color: white;
+            font-size: 22px;
+            margin-bottom: 20px;
+            margin-right: 5px;
+          "
+        >
+          CURRENT LEVEL:
         </div>
+        <div
+          id="mylevel"
+          style="color: white; width: 12px; font-size: 22px"
+        ></div>
+      </div>
 
-        <div style="display: flex; justify-content: center; ">
+      <div class="centerer">
         <table class="rwd-table">
-            <tr>
-              <th>Level</th>
-              <th>Price</th>
-              <th>Buy</th>
-            </tr>
-            <tr>
-              <td data-th="Movie Title" class="mota">Level 1</td>
-              <td data-th="Genre" class="mota">0.0001 eth</td>
-              <td data-th="Year" ><button class="fetcher" style="display: block; margin: 0px; padding: 7px 15px; font-size: 15px; font-weight: 700; border-radius: 22px; border: none;  " id="l1" >Get Level 1</button></td>
-      
-            </tr>
-            <tr>
-              <td data-th="Movie Title" class="mota">Level 2</td>
-              <td data-th="Genre" class="mota">0.001  eth</td>
-              <td data-th="Year"><button class="fetcher" style="display: block; margin: 0px; padding: 7px 15px; font-size: 15px; font-weight: 700; border-radius: 22px; border: none;  " id="l2" >Get Level 2</button></td>
+          <tr>
+            <th>Level</th>
+            <th>Price</th>
+            <th style="text-align: center">Buy</th>
+          </tr>
+          <tr>
+            <td class="mota">Level 1</td>
+            <td class="mota">0.0001 eth</td>
+            <td><button class="disbtn" id="l1">Get Level 1</button></td>
+          </tr>
+          <tr>
+            <td class="mota">Level 2</td>
+            <td class="mota">0.001 eth</td>
+            <td><button class="disbtn" id="l2">Get Level 2</button></td>
+          </tr>
+          <tr>
+            <td class="mota">Level 3</td>
+            <td class="mota">0.01 eth</td>
+            <td><button class="disbtn" id="l3">Get Level 3</button></td>
+          </tr>
+        </table>
+      </div>
+      <br />
 
-              
-      
-            </tr>
-            <tr>
-              <td data-th="Movie Title" class="mota">Level 3</td>
-              <td data-th="Genre" class="mota">0.01 eth</td>
-              <td data-th="Year"><button class="fetcher" style="display: block; margin: 0px; padding: 7px 15px; font-size: 15px; font-weight: 700; border-radius: 22px; border: none;  " id="l3" >Get Level 3</button></td>
-              
-          </table>
+      <div class="centerer">
+        <div
+          style="
+            color: white;
+            font-size: 22px;
+            margin-bottom: 20px;
+            margin-right: 5px;
+          "
+        >
+          Your Premium Content:
         </div>
-          <br>
-          <div style="display: flex; justify-content: center; ">
-            <div style="color: white; font-size: 22px; margin-bottom: 20px; margin-right: 5px;"> Your Premium Content: </div>
-        </div>
-
-
-        <div style="display: flex; justify-content: center; ">
-            <div id="premiumcontent"></div>
-            
-        </div>
+      </div>
+      <div class="centerer">
+        <div id="premiumcontent"></div>
+      </div>
     </div>
+    <!-- end of fund page -->
 
-</div>
+    <!-- admin page -->
+    <div style="display: none" id="adminpage">
+      <div style="font-weight: 700" id="adminpage" class="centerer">
+        <div
+          class="card"
+          style="
+            width: 200px;
+            background-color: gray;
+            border-radius: 30px;
+            margin-right: 25px;
+          "
+        >
+          <div class="centerer">
+            <div style="margin: 15px; font-size: 18px; font-weight: 700">
+              See Balance:
+            </div>
+          </div>
 
-<!-- end of fund page -->
+          <div class="centerer">
+            <div class="dabbus" id="balancebox"></div>
+          </div>
 
-
-
-
-
-
-<!-- admin page -->
-<div style="display: none;" id="adminpage">
-
-    
-<div style="display: flex; justify-content: center; font-weight: 700;" id="adminpage">
-
-
-    <div class="card" style="width: 200px; background-color: gray; border-radius: 30px; margin-right: 25px;">
-    
-        <div style="display: flex; justify-content: center; ">
-            <div style="margin: 15px; font-size: 18px; font-weight: 700;">See Balance:</div>
+          <div class="centerer">
+            <button class="fetchbtn" id="getbal">Fetch</button>
+          </div>
         </div>
-          
-        <div style="display: flex; justify-content: center; ">   
-            <div style="height: 0px; width: 150px; background-color: rgb(37, 37, 37); border-radius: 20px;  text-align: center; color: white;padding-top: 15px;  padding-bottom: 35px; font-size: 20px;" id="dabba"></div>    
+
+        <div
+          class="card"
+          style="width: 600px; background-color: gray; border-radius: 30px"
+        >
+          <div class="centerer">
+            <div style="margin: 15px; font-size: 18px; font-weight: 700">
+              NO. OF PATREONS:
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-evenly">
+            <div class="counts" id="alphas"></div>
+            <div class="counts" id="betas"></div>
+            <div class="counts" id="gammas"></div>
+          </div>
+
+          <div style="display: flex; justify-content: space-evenly">
+            <div class="leveltags">Level 1</div>
+            <div class="leveltags">Level 2</div>
+            <div class="leveltags">Level 3</div>
+          </div>
+
+          <div class="centerer">
+            <button class="fetcher refresh" id="refresher">Refresh</button>
+          </div>
         </div>
-    
-    
-        <div style="display: flex; justify-content: center; ">
-          <button class="fetcher" style="display: block; margin: 15px; padding: 7px 15px; font-size: 15px; font-weight: 700; border-radius: 22px; border: none; margin-top: 39px; " id="getbal">Fetch</button>
+      </div>
+
+      <br /><br />
+
+      <!-- Bottom bar: Withdraw Button & level check -->
+
+      <div class="centerer">
+        <div style="display: inline-block">
+          <button
+            class="effect effect-1"
+            style="margin-right: 25px"
+            id="withdraw"
+          >
+            Withdraw Funds
+          </button>
         </div>
-        
+
+        <input
+          type="text"
+          placeholder="Paste Address here...."
+          class="search"
+          id="mapper"
+        />
+        <button class="check" style="margin-right: 15px" id="check">
+          Find Level of an Address
+        </button>
+
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            color: white;
+            width: 135px;
+            font-weight: 600;
+          "
+          id="output"
+        ></div>
+      </div>
     </div>
+    <!-- end of admin page  -->
 
-    <div class="card" style="width: 600px; background-color: gray; border-radius: 30px;">
-    
-        <div style="display: flex; justify-content: center; ">
-          <div style="margin: 15px; font-size: 18px; font-weight: 700;">NO. OF PATREONS:</div>
-        </div>
-          
-        <div style="display: flex; justify-content: space-evenly">   
-            <div style="height: 0px; width: 150px; background-color: rgb(37, 37, 37); border-radius: 20px; color: white;text-align: center; padding-top: 15px; text-align: center; padding-bottom: 35px; font-size: 20px;" id="alphas"></div>  
-            <div style="height: 0px; width: 150px; background-color: rgb(37, 37, 37); border-radius: 20px;color: white;text-align: center; padding-top: 15px; text-align: center; padding-bottom: 35px; font-size: 20px;" id="betas"></div>
-            <div style="height: 0px; width: 150px; background-color: rgb(37, 37, 37); border-radius: 20px;color: white;text-align: center; padding-top: 15px; text-align: center; padding-bottom: 35px; font-size: 20px;" id="gammas"></div>  
-        </div>
-    
-        <div style="display: flex; justify-content: space-evenly">   
-            <div style="height: 25px; width: 150px;  border-radius: 20px;margin: 7px; font-size: 16px; font-weight: 900; display: flex; justify-content:center">Level 1</div>  
-            <div style="height: 25px; width: 150px;  border-radius: 20px;margin: 7px; font-size: 16px; font-weight: 900; display: flex; justify-content:center">Level 2</div>  
-            <div style="height: 25px; width: 150px;  border-radius: 20px;margin: 7px; font-size: 16px; font-weight: 900; display: flex; justify-content:center">Level 3</div>   
-        </div>
-    
-    
-        <div style="display: flex; justify-content: center; ">
-          <button class="fetcher" style="display: block; margin: 15px; padding: 7px 15px; font-size: 15px; font-weight: 700; border-radius: 22px; border: none;" id="refresher">Refresh</button>
-        </div>
-        
-    </div>   
- 
-
-</div>
-
-<br><br>
-<div style="display: flex; justify-content: center;">
-    
-    <div style="display: inline-block;">    <div style="display:flex; justify-content: center; "> <button class="effect effect-1" href="#" title="Learn More" style="margin-right: 25px;" id="withdraw">Withdraw Funds</button></div></div>
-
-    <div style="display: flex; align-items: center;">    <input type="text" placeholder="Paste Address here...." class="search" id="mapper" /><button class="check" style="margin-right: 15px;" id="check">Find Level of an Address</button></div>
-
-    <div style="display: flex; align-items: center; color: white; width: 135px; font-weight: 600;" id="output"></div>
-
-</div>
-
-</div>
-   
     <script src="index.js" type="module"></script>
-</body>
+  </body>
 </html>
